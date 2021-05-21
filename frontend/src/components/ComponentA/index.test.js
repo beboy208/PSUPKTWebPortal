@@ -1,0 +1,3 @@
+/*
+Each component has a test file to help us maintain them because they used widely in the project.
+*/
