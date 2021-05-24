@@ -1,0 +1,74 @@
+@font-face {
+  font-family: "Chuanpim";
+  src: url("../fonts/db_chuanpim_psu_regular.woff2");
+}
+
+@font-face {
+  font-family: "Stidti";
+  src: url("../fonts/psu-stidti-regular.woff2");
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  font-family: "Chuanpim", "Courier New", Courier, monospace;
+  font-size: 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Stidti", "Courier New", Courier, monospace;
+}
+
+.header {
+  background-color: var(--header-bg-color);
+  color: var(--header-fg-color);
+}
+
+.header .container {
+  height: 50px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+img.logo {
+  height: 70%;
+  background-color: var(--header-fg-color);
+}
+
+.header .title {
+  font-weight: bolder;
+  font-size: 1.8em;
+  margin-left: 10px;
+}
+
+#content {
+  background-color: var(--content-bg-color);
+  color: var(--content-fg-color);
+  min-height: 400px;
+}
+
+a {
+  color: var(--color3);
+}
+
+.footer {
+  background-color: var(--header-bg-color);
+  color: var(--header-fg-color);
+  min-height: 100px;
+}
+
+h1:hover {
+  color: var(--content-hl-color);
+}
+
+.footer a {
+  color: var(--footer-hl-color);
+}

@@ -1,0 +1,11 @@
+:root {
+  --header-bg-color: #003c71;
+  --header-fg-color: #ffffff;
+  --header-hl-color: #ffffff;
+  --footer-bg-color: #003c71;
+  --footer-fg-color: #ffffff;
+  --footer-hl-color: #ffffff;
+  --content-bg-color: rgb(245, 245, 245);
+  --content-fg-color: black;
+  --content-hl-color: #009cde;
+}
