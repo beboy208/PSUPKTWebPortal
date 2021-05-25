@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Container, FormCheck, Row } from "react-bootstrap";
 import CategoriesSelectorBL from "./CategoriesSelectorBL";
 
-const CategoriesSelector = () => {
+const CategoriesSelector = ({ categories }) => {
   const { state, functions } = CategoriesSelectorBL;
 
   return (

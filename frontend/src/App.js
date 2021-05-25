@@ -1,12 +1,11 @@
 import "./App.css";
 import MainLayout from "./layout/MainLayout";
-import ApplicationMain from "./views/Application/ApplicationMain";
-//import Example from "./views/Example";
+import Application from "./views/Application/";
 
 function App() {
   return (
     <MainLayout>
-      <ApplicationMain />
+      <Application />
     </MainLayout>
   );
 }
