@@ -2,7 +2,7 @@ import React from "react";
 
 const mockAppData = [
   { id: 1, name: "App 1", categories: [1, 2] },
-  { id: 2, name: "App 2", categories: [1, 3] },
+  { id: 2, name: "App 2", categories: [1, 3, 7] },
 ];
 
 const mockAppCategoryData = [

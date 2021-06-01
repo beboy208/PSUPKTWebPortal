@@ -1,27 +1,25 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import ApplicationList from "./AppList";
-import CategoriesSelector from "./CategoriesSelector";
+
 import ApplicationPageContextProvider from "../../contexts/ApplicationPageContext";
-import AppLoader from "./AppLoader";
-import bl from "./ApplicationBL";
+import CategoriesSelector from "../../components/ApplicationPageComponents/CategoriesSelector";
+import ApplicationLoader from "../../components/ApplicationPageComponents/ApplicationLoader/ApplicationLoader";
+import AppList from "../../components/ApplicationPageComponents/ApplicationList/AppList";
 
 const ApplicationPage = () => {
-  const { apps, setApps, categories, setCategories } = bl();
-
   return (
     <Container>
       <ApplicationPageContextProvider>
-        <AppLoader>
+        <ApplicationLoader>
           <Row>
-            <Col md={3} xs={12}>
+            <Col md={2} xs={12}>
               <CategoriesSelector />
             </Col>
-            <Col md={9} xs={12}>
-              <ApplicationList />
+            <Col md={10} xs={12}>
+              <AppList />
             </Col>
           </Row>
-        </AppLoader>
+        </ApplicationLoader>
       </ApplicationPageContextProvider>
     </Container>
   );

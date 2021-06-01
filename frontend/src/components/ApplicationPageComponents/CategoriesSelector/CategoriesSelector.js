@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, FormCheck, Row } from "react-bootstrap";
-import bl from "./ApplicationBL";
+import { default as bl } from "./CategoriesSelectorBL";
 
 const CategoriesSelector = () => {
   const { categories, onCategoryChange } = bl();
@@ -12,22 +12,22 @@ const CategoriesSelector = () => {
         </Col>
       </Row>
       <Row>
-        <Col>
-          {categories &&
-            categories.map((cat, i) => {
-              return (
+        {categories &&
+          categories.map((cat, i) => {
+            return (
+              <Col md={12} xs={4}>
                 <FormCheck>
                   <FormCheck.Input
                     id={cat.id}
                     value={cat.id}
                     checked={cat.selected}
-                    onChange= {onCategoryChange}
+                    onChange={onCategoryChange}
                   />
                   <FormCheck.Label for={cat.id}>{cat.name}</FormCheck.Label>
                 </FormCheck>
-              );
-            })}
-        </Col>
+              </Col>
+            );
+          })}
       </Row>
     </Container>
   );

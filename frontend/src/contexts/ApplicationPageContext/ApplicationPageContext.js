@@ -4,12 +4,12 @@ import React from "react";
 const contextValue = {
   apps: null,
   categories: null,
-  filteredApps: [],
-  selectedCats: [],
+  // filteredApps: [],
+  // selectedCats: [],
   setApps: () => {},
   setCategories: () => {},
-  setFilteredApps: () => {},
-  setSelectedCats: () => {},
+  // setFilteredApps: () => {},
+  // setSelectedCats: () => {},
 };
 
 /* ประกาศพื้นที่เก็บข้อมูล */
