@@ -1,0 +1,72 @@
+// AppContext.js
+
+export const AppContext = React.createContext()
+
+const AppContextProvider = ({ children }) => {
+    const [allData, setAllData] = React.useState([])
+    const [filtered, setFiltered] = React.useState([])
+    const [keyFilter, setKeyFilter] = React.useState('')
+
+    return <AppContext.Provider value={{
+        allData,
+        setAllData,
+        keyFilter,
+        setKeyFilter,
+    }}>{children}</AppContext.Provider>
+}
+
+export default AppContextProvider
+
+// index.js
+return <AppContextProvider>
+    <App />
+</AppContextProvider>
+
+
+// App.js
+
+const App = () => {
+    // const appContext = React.useContext(AppContext)
+    // const { allData, setAllData } = appContext
+    // const { keyFilter, setKeyFilter } = appContext
+
+    return <div />
+}
+
+// Selector.js
+o
+const Selector = () => {
+    const appContext = React.useContext(AppContext)
+    const { keyFilter, setKeyFilter } = appContext
+
+    return <select onChange={(event) => setKeyFilter(event.target.value)} />
+}
+
+
+// List.js
+
+const List = () => {
+
+    const list = useFilteredData().data
+
+    return <div />
+}
+
+
+// useFilteredData.js
+
+const useFilteredData = () => {
+    const appContext = React.useContext(AppContext)
+    const { keyFilter, setKeyFilter } = appContext
+
+    const filtered = allData.filter(item => item.id === keyFilter)
+
+    React.useEffect(() => {
+        // fetch data
+    }, [])
+
+    return {
+        data: filtered
+        length: filtered.length
+    }
+}

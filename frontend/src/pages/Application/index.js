@@ -1,8 +1,8 @@
 import React from "react";
-import ApplicationMain from "./ApplicationMain";
+import ApplicationPage from "./ApplicationPage";
 
 const Application = () => {
-  return <ApplicationMain />;
+  return <ApplicationPage />;
 };
 
 export default Application;
