@@ -1,5 +1,5 @@
 import React from "react";
-import { ApplicationPageContext } from "../../../contexts/ApplicationPageContext";
+import { ApplicationPageContext } from "../../contexts/ApplicationPageContext";
 
 const CategoriesSelectorBL = () => {
   const { categories } = React.useContext(ApplicationPageContext);

@@ -1,9 +1,9 @@
 import React from "react";
 import { Col, Container, FormCheck, Row } from "react-bootstrap";
-import bl from "./CategoriesSelectorBL";
+import bl from "./ApplicationBL";
 
 const CategoriesSelector = () => {
-  const { categories, onCategoriesChanged } = bl();
+  const { categories, onCategoryChange } = bl();
   return (
     <Container>
       <Row>
@@ -20,7 +20,8 @@ const CategoriesSelector = () => {
                   <FormCheck.Input
                     id={cat.id}
                     value={cat.id}
-                    onChange={onCategoriesChanged}
+                    checked={cat.selected}
+                    onChange= {onCategoryChange}
                   />
                   <FormCheck.Label for={cat.id}>{cat.name}</FormCheck.Label>
                 </FormCheck>

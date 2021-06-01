@@ -1,13 +1,19 @@
 import React from "react";
 
 // /* ประกาศโครงสร้างส่วนของ context และ default value */
-// const applications = [{ id: 999, name: "Application 1" }];
+const contextValue = {
+  apps: null,
+  categories: null,
+  filteredApps: [],
+  selectedCats: [],
+  setApps: () => {},
+  setCategories: () => {},
+  setFilteredApps: () => {},
+  setSelectedCats: () => {},
+};
 
 /* ประกาศพื้นที่เก็บข้อมูล */
-export const ApplicationPageContext = React.createContext({
-  states: {},
-  setStates: {},
-});
+export const ApplicationPageContext = React.createContext(contextValue);
 
 /*
 ความเข้าใจส่วนตัวเกี่ยวกับการนำ Context.Provider มารวมไว้ที่ Context หรือแยกไฟล์ออกไป
@@ -22,20 +28,22 @@ export const ApplicationPageContext = React.createContext({
 const ApplicationPageContextProvider = ({ children }) => {
   const [apps, setApps] = React.useState(null);
   const [categories, setCategories] = React.useState(null);
+  const [filteredApps, setFilteredApps] = React.useState([]);
+  // const [selectedCats, setSelectedCats] = React.useState([1, 2]);
 
-  React.useEffect(() => {
-    console.log({ apps });
-  }, [apps]);
+  const contextValue = {
+    apps,
+    categories,
+    setApps,
+    setCategories,
+    filteredApps,
+    setFilteredApps,
+    // selectedCats,
+    // setSelectedCats,
+  };
 
   return (
-    <ApplicationPageContext.Provider
-      value={{
-        apps,
-        categories,
-        setApps,
-        setCategories,
-      }}
-    >
+    <ApplicationPageContext.Provider value={contextValue}>
       {children}
     </ApplicationPageContext.Provider>
   );
