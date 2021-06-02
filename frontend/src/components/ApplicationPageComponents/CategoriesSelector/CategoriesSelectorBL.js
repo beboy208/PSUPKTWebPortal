@@ -7,11 +7,11 @@ const CategoriesSelectorBL = () => {
 
   const onCategoryChange = useCallback(
     (event) => {
-      console.log(event.target.value, event.target.checked);
+      //console.log(event.target.value, event.target.checked);
       const selectedCat = categories.find((c) => {
         return c.id == event.target.value;
       });
-      console.log({ selectedCat });
+      //console.log({ selectedCat });
       if (selectedCat != null) {
         selectedCat.selected = !selectedCat.selected;
       }

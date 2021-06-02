@@ -10,7 +10,7 @@ const AppList = () => {
   // const { categories, setCategories } = context;
 
   React.useEffect(() => {
-    console.log("Current", { categories });
+    //console.log("Current", { categories });
   }, [categories]);
 
   return (
@@ -43,7 +43,11 @@ const AppList = () => {
       </div>
       {apps &&
         apps.map((app, i) => {
-          return <div key={i}>{app.name}</div>;
+          return (
+            <div key={i}>
+              {app.name} {app.categories}
+            </div>
+          );
         })}
     </div>
   );
