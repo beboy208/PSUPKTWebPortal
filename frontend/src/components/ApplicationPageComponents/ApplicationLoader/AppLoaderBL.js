@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { ApplicationPageContext } from "../../../contexts/ApplicationPageContext";
-import ApplicationService from "../../../services/ApplicationService";
+import ApplicationService from "../../../services/ApplicationServiceGS";
 
 const AppLoaderBL = () => {
   const context = React.useContext(ApplicationPageContext);
@@ -8,7 +8,10 @@ const AppLoaderBL = () => {
   const { categories, setCategories } = context;
 
   const fetchApps = useCallback(() => {
-    setApps(ApplicationService.getApplications());
+    ApplicationService.getApplications({}).then((data) => {
+      setApps(data);
+      console.log(data);
+    });
   }, [setApps]);
 
   const fetchCategories = useCallback(() => {
@@ -19,7 +22,8 @@ const AppLoaderBL = () => {
 
   React.useEffect(() => {
     fetchApps();
-  }, [fetchApps]);
+    console.log({ apps });
+  }, [fetchApps, apps]);
 
   React.useEffect(() => {
     fetchCategories();

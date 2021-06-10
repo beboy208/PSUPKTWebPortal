@@ -1,32 +1,3 @@
-const appInfo1 = {
-  id: 999,
-  name: "ApplicationName",
-  description: "Description",
-  categoryIDs: [1],
-  typeID: "0",
-  bannerImgUrl: "",
-  url: "https://www.999.com",
-  privateIP: "127.0.0.1",
-  contacts: [
-    {
-      id: "",
-      name: "someone",
-      position: "developer",
-      phones: ["6500"],
-      emails: ["contact@phuket.psu.ac.th"],
-      note: "",
-    },
-  ],
-  note: "",
-  isAvailable: false,
-};
-
-const mockApplications = [
-  appInfo1,
-  { id: 1, name: "App 1", categories: [1, 2] },
-  { id: 2, name: "App 2", categories: [1, 3, 7] },
-];
-
 const mockAppCategories = [
   { id: 1, name: "Student", note: "For all Students" },
   { id: 2, name: "Staff", note: "For all Staffs" },
@@ -45,13 +16,20 @@ const mockApplicationType = [
   { id: 4, name: "IOS Application" },
 ];
 
+const apiPath =
+  "https://script.google.com/macros/s/AKfycbxqEDuO-Abbfbb2EhUroqhWJXKPAvZKvWVb5-nNzSeH-yYXOoU4Ju3S4Kg2hsPBleO6/exec";
+
 /**
  * Get Applications
  * @param { ?boolean } isAvailable - null for all applications
  * @returns array of applications
  */
-const getApplications = ({ isAvailable } = {}) => {
-  return mockApplications.filter(
+const getApplications = async ({ isAvailable } = {}) => {
+  const fetchData = await fetch(apiPath + "?q=application").then((response) =>
+    response.json()
+  );
+
+  return fetchData.data.filter(
     (a) =>
       isAvailable === undefined ||
       a.isAvailable === isAvailable ||
