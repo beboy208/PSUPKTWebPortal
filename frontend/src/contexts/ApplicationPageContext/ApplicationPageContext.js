@@ -4,11 +4,11 @@ import React from "react";
 const contextValue = {
   apps: null,
   categories: null,
-  // filteredApps: [],
+  //filteredApps: [],
   // selectedCats: [],
   setApps: () => {},
   setCategories: () => {},
-  // setFilteredApps: () => {},
+  //setFilteredApps: () => {},
   // setSelectedCats: () => {},
 };
 
@@ -36,8 +36,8 @@ const ApplicationPageContextProvider = ({ children }) => {
     categories,
     setApps,
     setCategories,
-    filteredApps,
-    setFilteredApps,
+    // filteredApps,
+    // setFilteredApps,
     // selectedCats,
     // setSelectedCats,
   };

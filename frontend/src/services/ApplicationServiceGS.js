@@ -1,3 +1,26 @@
+const appInfoDemo = {
+  id: 999,
+  name: "ApplicationName",
+  description: "Description",
+  categoryIDs: [1],
+  typeID: "0",
+  bannerImgUrl: "",
+  url: "https://www.999.com",
+  privateIP: "127.0.0.1",
+  contacts: [
+    {
+      id: "",
+      name: "someone",
+      position: "developer",
+      phones: ["6500"],
+      emails: ["contact@phuket.psu.ac.th"],
+      note: "",
+    },
+  ],
+  note: "",
+  isAvailable: false,
+};
+
 const mockAppCategories = [
   { id: 1, name: "Student", note: "For all Students" },
   { id: 2, name: "Staff", note: "For all Staffs" },
@@ -25,16 +48,28 @@ const apiPath =
  * @returns array of applications
  */
 const getApplications = async ({ isAvailable } = {}) => {
-  const fetchData = await fetch(apiPath + "?q=application").then((response) =>
-    response.json()
-  );
+  return fetch(apiPath + "?q=application")
+    .then((response) => response.json())
+    .then((data) => {
+      let filterdApps = data.data.filter(
+        (a) =>
+          isAvailable === undefined ||
+          a.isAvailable === isAvailable ||
+          a.hasOwnProperty("isAvailable") === false
+      );
 
-  return fetchData.data.filter(
-    (a) =>
-      isAvailable === undefined ||
-      a.isAvailable === isAvailable ||
-      a.hasOwnProperty("isAvailable") === false
-  );
+      filterdApps.forEach((element) => {
+        let catIDs =
+          typeof element.categoryIDs === "string"
+            ? element.categoryIDs.split(",")
+            : [];
+        element.categoryIDs = [...catIDs];
+      });
+
+      return filterdApps;
+    });
+
+  //or return await data.data.filter...
 };
 
 const getApplicationCategories = () => {

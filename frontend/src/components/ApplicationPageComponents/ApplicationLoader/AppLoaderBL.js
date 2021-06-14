@@ -10,7 +10,7 @@ const AppLoaderBL = () => {
   const fetchApps = useCallback(() => {
     ApplicationService.getApplications({}).then((data) => {
       setApps(data);
-      console.log(data);
+      console.log(data, "app loader bl");
     });
   }, [setApps]);
 
@@ -22,8 +22,11 @@ const AppLoaderBL = () => {
 
   React.useEffect(() => {
     fetchApps();
+  }, [fetchApps]);
+
+  React.useEffect(() => {
     console.log({ apps });
-  }, [fetchApps, apps]);
+  }, [apps]);
 
   React.useEffect(() => {
     fetchCategories();
