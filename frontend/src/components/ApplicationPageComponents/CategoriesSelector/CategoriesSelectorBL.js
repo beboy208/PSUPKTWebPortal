@@ -9,14 +9,15 @@ const CategoriesSelectorBL = () => {
     (event) => {
       //console.log(event.target.value, event.target.checked);
       const selectedCat = categories.find((c) => {
-        return c.id == event.target.value;
+        return c.id === event.target.value;
       });
       //console.log({ selectedCat });
       if (selectedCat != null) {
+        // pointer to item, not a new object
         selectedCat.selected = !selectedCat.selected;
       }
       //console.log({ categories });
-      setCategories([...categories]);
+      setCategories([...categories]); // No filter items, Update selected value
     },
     [categories, setCategories]
   );

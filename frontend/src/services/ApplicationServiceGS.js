@@ -20,7 +20,7 @@ const appInfoDemo = {
   note: "",
   isAvailable: false,
 };
-
+/*
 const mockAppCategories = [
   { id: 1, name: "Student", note: "For all Students" },
   { id: 2, name: "Staff", note: "For all Staffs" },
@@ -38,7 +38,7 @@ const mockApplicationType = [
   { id: 3, name: "Android Application" },
   { id: 4, name: "IOS Application" },
 ];
-
+*/
 const apiPath =
   "https://script.google.com/macros/s/AKfycbxqEDuO-Abbfbb2EhUroqhWJXKPAvZKvWVb5-nNzSeH-yYXOoU4Ju3S4Kg2hsPBleO6/exec";
 
@@ -48,7 +48,7 @@ const apiPath =
  * @returns array of applications
  */
 const getApplications = async ({ isAvailable } = {}) => {
-  return fetch(apiPath + "?q=application")
+  return fetch(apiPath + "?q=applications")
     .then((response) => response.json())
     .then((data) => {
       let filterdApps = data.data.filter(
@@ -73,17 +73,37 @@ const getApplications = async ({ isAvailable } = {}) => {
 };
 
 const getApplicationCategories = () => {
-  return mockAppCategories;
+  return fetch(apiPath + "?q=categories")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log({ categories: data.data });
+      return data.data;
+    });
 };
 
 const getApplicationTypes = () => {
-  return mockApplicationType;
+  return fetch(apiPath + "?q=types")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log({ type: data.data });
+      return data.data;
+    });
+};
+
+const getApplicationContacts = () => {
+  return fetch(apiPath + "?q=contacts")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log({ context: data.data });
+      return data.data;
+    });
 };
 
 const ApplicationService = {
   getApplications,
   getApplicationTypes,
   getApplicationCategories,
+  getApplicationContacts,
 };
 
 export default ApplicationService;

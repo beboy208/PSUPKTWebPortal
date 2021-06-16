@@ -3,13 +3,14 @@ import React from "react";
 // /* ประกาศโครงสร้างส่วนของ context และ default value */
 const contextValue = {
   apps: null,
-  categories: null,
-  //filteredApps: [],
-  // selectedCats: [],
+  appContext: null,
+  categories: [], //Lookup
+  AppTypes: [], //Lookup
+
   setApps: () => {},
+  setAppContext: () => {},
   setCategories: () => {},
-  //setFilteredApps: () => {},
-  // setSelectedCats: () => {},
+  setAppTypes: () => {},
 };
 
 /* ประกาศพื้นที่เก็บข้อมูล */
@@ -27,19 +28,19 @@ export const ApplicationPageContext = React.createContext(contextValue);
 */
 const ApplicationPageContextProvider = ({ children }) => {
   const [apps, setApps] = React.useState(null);
-  const [categories, setCategories] = React.useState(null);
-  const [filteredApps, setFilteredApps] = React.useState([]);
-  // const [selectedCats, setSelectedCats] = React.useState([1, 2]);
+  const [categories, setCategories] = React.useState([]);
+  const [appContext, setAppContext] = React.useState(null);
+  const [appTypes, setAppTypes] = React.useState([]);
 
   const contextValue = {
     apps,
     categories,
+    appContext,
+    appTypes,
     setApps,
     setCategories,
-    // filteredApps,
-    // setFilteredApps,
-    // selectedCats,
-    // setSelectedCats,
+    setAppContext,
+    setAppTypes,
   };
 
   return (

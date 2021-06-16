@@ -1,17 +1,10 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
+import context from "react-bootstrap/esm/AccordionContext";
 import { default as bl } from "./AppListBL";
 
 const AppList = () => {
-  const { apps, categories } = bl();
-
-  // const context = React.useContext(ApplicationPageContext);
-  // const { apps, setApps } = context;
-  // const { categories, setCategories } = context;
-
-  React.useEffect(() => {
-    //console.log("Current", { categories });
-  }, [categories]);
+  const { apps, categories, appTypes, appContext } = bl();
 
   return (
     <div>
@@ -41,11 +34,15 @@ const AppList = () => {
           );
         })}
       </div>
+      {console.log(appTypes)}
       {apps &&
         apps.map((app, i) => {
+          console.log({ app });
           return (
             <div key={i}>
-              {app.name} {app.categories}
+              {app.name} {app.categoryIDs} {app.typeID}
+              {appTypes.find((t) => t.id === app.typeID)?.name || "-"}
+              {appContext.find((c) => c.appID === app.id)}
             </div>
           );
         })}

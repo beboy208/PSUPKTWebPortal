@@ -3,24 +3,35 @@ import { ApplicationPageContext } from "../../../contexts/ApplicationPageContext
 
 const AppListBL = () => {
   const context = React.useContext(ApplicationPageContext);
-  const { apps, categories } = context;
+  const { apps, categories, appTypes, appContext } = context;
 
+  //กำหนดข้อมูลที่ต้องการติดตามเฉพาะใน Component นี้ ประกอบด้วย
+  //1. selectedCategories โดยมีค่าเริ่มต้นเท่ากับข้อมูล Categories ทั้งหมด
+  //2. filteredApps  โดยมีค่าเริ่มต้นเท่ากับข้อมูล Applications ทั้งหมด
   const [selectedCategories, setSelectedCategories] =
     React.useState(categories);
   const [filteredApps, setFilteredApp] = React.useState(apps);
 
+  //ติดตามการเปลี่ยนแปลงค่าของ categories เพื่อปรับค่า setSelectedCategories
+  React.useEffect(() => {
+    const result = categories.filter((c) => c.selected === true);
+    setSelectedCategories(result);
+    //console.log({ result });
+  }, [categories]);
+
+  //ติดตามการเปลี่ยนแปลงค่าของ setSelectedCategories รวมถึง applications
   React.useEffect(() => {
     const selectedCateIDs = selectedCategories.map((c) => c.id);
-    console.log({ selectedCateIDs });
+    //console.log({ selectedCateIDs });
     //วนลูปตามจำนวน applications ที่เข้ามา
     const result = apps.filter((a) => {
       //วนลูปตามจำนวน category ของ application
       //ตรวจสอบว่า Category ที่ถูกเลือกมานั้น ตรงกับ category ของ application หรือไม่
-      console.log(a);
+      //console.log(a);
       const matchCats = Array.isArray(a.categoryIDs)
         ? a.categoryIDs.filter((c) => {
             let include = selectedCateIDs.includes(parseInt(c));
-            console.log(c, include);
+            //console.log(c, include);
             return include;
           })
         : [];
@@ -30,13 +41,12 @@ const AppListBL = () => {
     setFilteredApp(result);
   }, [apps, selectedCategories]);
 
-  React.useEffect(() => {
-    const result = categories.filter((c) => c.selected === true);
-    setSelectedCategories(result);
-    //console.log({ result });
-  }, [categories]);
-
-  return { apps: filteredApps, categories: selectedCategories };
+  return {
+    apps: filteredApps,
+    categories: selectedCategories,
+    appTypes,
+    appContext,
+  };
 };
 
 export default AppListBL;
