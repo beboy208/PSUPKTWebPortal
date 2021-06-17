@@ -7,17 +7,24 @@ const CategoriesSelectorBL = () => {
 
   const onCategoryChange = useCallback(
     (event) => {
-      //console.log(event.target.value, event.target.checked);
-      const selectedCat = categories.find((c) => {
-        return c.id === event.target.value;
-      });
-      //console.log({ selectedCat });
-      if (selectedCat != null) {
-        // pointer to item, not a new object
-        selectedCat.selected = !selectedCat.selected;
-      }
-      //console.log({ categories });
-      setCategories([...categories]); // No filter items, Update selected value
+      console.log(event.target.value, event.target.checked);
+      setCategories(
+        categories.map((c) => {
+          if (parseInt(event.target.value) === c.id) {
+            return { ...c, selected: event.target.checked };
+          }
+          return c;
+        })
+      );
+      // console.log(
+      //   categories.map((c) => {
+      //     console.log(event.target.value === c.id, event.target.value, c);
+      //     if (event.target.value == c.id) {
+      //       return { ...c, selected: event.target.checked };
+      //     }
+      //     return c;
+      //   })
+      // );
     },
     [categories, setCategories]
   );

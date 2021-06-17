@@ -4,6 +4,10 @@ import { default as bl } from "./CategoriesSelectorBL";
 
 const CategoriesSelector = () => {
   const { categories, onCategoryChange } = bl();
+  React.useEffect(() => {
+    console.log({ categories });
+    console.log({ onCategoryChange });
+  }, [categories, onCategoryChange]);
   return (
     <Container>
       <Row>

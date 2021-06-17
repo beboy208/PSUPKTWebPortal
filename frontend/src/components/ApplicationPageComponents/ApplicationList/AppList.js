@@ -1,6 +1,5 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
-import context from "react-bootstrap/esm/AccordionContext";
 import { default as bl } from "./AppListBL";
 
 const AppList = () => {
@@ -34,15 +33,14 @@ const AppList = () => {
           );
         })}
       </div>
-      {console.log(appTypes)}
+      {/* {console.log(appTypes)} */}
       {apps &&
         apps.map((app, i) => {
-          console.log({ app });
+          //console.log({ app });
           return (
             <div key={i}>
               {app.name} {app.categoryIDs} {app.typeID}
               {appTypes.find((t) => t.id === app.typeID)?.name || "-"}
-              {appContext.find((c) => c.appID === app.id)}
             </div>
           );
         })}

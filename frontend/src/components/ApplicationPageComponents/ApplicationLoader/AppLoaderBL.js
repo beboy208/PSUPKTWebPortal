@@ -7,7 +7,7 @@ const AppLoaderBL = () => {
   const { apps, setApps } = context;
   const { categories, setCategories } = context;
   const { appTypes, setAppTypes } = context;
-  const { appContext, setAppContext } = context;
+  // const { appContext, setAppContext } = context;
 
   /*
   // const fetchFunctions = [
@@ -30,10 +30,16 @@ const AppLoaderBL = () => {
   //   fetchData();
   // }, [fetchData]);
 */
-  const fetchApps = useCallback(() => {
-    ApplicationService.getApplications({}).then((data) => {
-      setApps(data);
+  const fetchApps = useCallback(async () => {
+    const applications = await ApplicationService.getApplications({});
+    const contacts = await ApplicationService.getApplicationContacts();
+    const applications2 = applications.map((a) => {
+      //console.log("Loop: ", { a });
+      a.contacts = contacts.filter((c) => c.appID === a.id);
+      return a;
     });
+    //console.log({ applications2 });
+    setApps(applications2);
   }, [setApps]);
 
   const fetchCategories = useCallback(() => {
@@ -49,17 +55,15 @@ const AppLoaderBL = () => {
     });
   }, [setAppTypes]);
 
-  const fetchAppContext = useCallback(() => {
-    ApplicationService.getApplicationContacts().then((data) => {
-      setAppContext(data);
-    });
-  }, [setAppContext]);
+  // const fetchAppContext = useCallback(() => {
+  //   ApplicationService.getApplicationContacts().then((data) => {
+  //     setAppContext(data);
+  //   });
+  // }, [setAppContext]);
 
-  // console.log("fetch data ... ติดลูปการดึงข้อมูล");
-  // fetchApps();
-  // fetchAppTypes();
-  // fetchAppContext();
-  // fetchCategories();
+  React.useEffect(() => {
+    console.log({ apps });
+  }, [apps]);
 
   React.useEffect(() => {
     fetchApps();
@@ -70,14 +74,13 @@ const AppLoaderBL = () => {
   React.useEffect(() => {
     fetchAppTypes();
   }, [fetchAppTypes]);
-  React.useEffect(() => {
-    fetchAppContext();
-  }, [fetchAppContext]);
+  // React.useEffect(() => {
+  //   fetchAppContext();
+  // }, [fetchAppContext]);
 
   return {
     apps,
     categories,
-    appContext,
     appTypes,
   };
 };
