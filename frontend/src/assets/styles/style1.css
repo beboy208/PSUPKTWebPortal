@@ -1,0 +1,11 @@
+.selectedCats {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 768px) {
+  .selectedCats {
+    display: none;
+  }
+}

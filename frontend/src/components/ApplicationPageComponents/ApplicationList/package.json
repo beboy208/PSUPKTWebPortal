@@ -1,3 +1,4 @@
 {
-    "main": "AppList.js"
+    "name": "application-list",
+    "main": "AppListAccordion.js"
 }

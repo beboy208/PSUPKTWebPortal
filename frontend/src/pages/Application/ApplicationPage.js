@@ -1,10 +1,9 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-
 import ApplicationPageContextProvider from "../../contexts/ApplicationPageContext";
 import CategoriesSelector from "../../components/ApplicationPageComponents/CategoriesSelector";
 import ApplicationLoader from "../../components/ApplicationPageComponents/ApplicationLoader/ApplicationLoader";
-import AppList from "../../components/ApplicationPageComponents/ApplicationList/AppList";
+import AppListAccordion from "../../components/ApplicationPageComponents/ApplicationList/AppListAccordion";
 
 const ApplicationPage = () => {
   return (
@@ -16,7 +15,7 @@ const ApplicationPage = () => {
               <CategoriesSelector />
             </Col>
             <Col md={10} xs={12}>
-              <AppList />
+              <AppListAccordion />
             </Col>
           </Row>
         </ApplicationLoader>

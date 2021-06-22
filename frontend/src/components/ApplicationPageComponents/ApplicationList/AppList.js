@@ -1,49 +1,32 @@
 import React from "react";
-import { Badge } from "react-bootstrap";
+import FilteredCategories from "../FilteredCategories/FilteredCategories";
+
 import { default as bl } from "./AppListBL";
 
+const AppListItem = ({ app, key }) => {
+  return (
+    <div key={key}>
+      {app.name} {app.categoryIDs} {app.typeID}
+      {/* {appTypes.find((t) => t.id === app.typeID)?.name || "-"} */}
+    </div>
+  );
+};
+
 const AppList = () => {
-  const { apps, categories, appTypes, appContext } = bl();
+  const { apps, categories, appTypes } = bl();
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-start",
-          flexWrap: "wrap",
-        }}
-      >
-        {categories.map((c, i) => {
-          return (
-            <>
-              <Badge
-                pill
-                key={i}
-                style={{
-                  marginRight: "5px",
-                  marginBottom: "2px",
-                  color: "var(--header-bg-color)",
-                  backgroundColor: "var(--header-fg-color)",
-                }}
-              >
-                {c.id}:{c.name}
-              </Badge>
-            </>
-          );
-        })}
-      </div>
+    <div class="container">
+      <FilteredCategories categories={categories} />
       {/* {console.log(appTypes)} */}
-      {apps &&
-        apps.map((app, i) => {
-          //console.log({ app });
-          return (
-            <div key={i}>
-              {app.name} {app.categoryIDs} {app.typeID}
-              {appTypes.find((t) => t.id === app.typeID)?.name || "-"}
-            </div>
-          );
-        })}
+      <div class="appList">
+        {apps &&
+          apps.map((app, i) => {
+            //console.log({ app });
+            app.type = appTypes.find((t) => t.id === app.typeID)?.name || "-";
+            return <AppListItem app={app} key={i} />;
+          })}
+      </div>
     </div>
   );
 };

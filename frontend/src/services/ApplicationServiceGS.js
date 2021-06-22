@@ -17,6 +17,8 @@ const appInfoDemo = {
       note: "",
     },
   ],
+  publisher: null,
+  developer: null,
   note: "",
   isAvailable: false,
 };
@@ -72,7 +74,7 @@ const getApplications = async ({ isAvailable } = {}) => {
   //or return await data.data.filter...
 };
 
-const getApplicationCategories = () => {
+const getApplicationCategories = async () => {
   return fetch(apiPath + "?q=categories")
     .then((response) => response.json())
     .then((data) => {
@@ -81,7 +83,7 @@ const getApplicationCategories = () => {
     });
 };
 
-const getApplicationTypes = () => {
+const getApplicationTypes = async () => {
   return fetch(apiPath + "?q=types")
     .then((response) => response.json())
     .then((data) => {
@@ -90,11 +92,21 @@ const getApplicationTypes = () => {
     });
 };
 
-const getApplicationContacts = () => {
+const getApplicationContacts = async () => {
   return fetch(apiPath + "?q=contacts")
     .then((response) => response.json())
     .then((data) => {
       console.log({ context: data.data });
+      return data.data;
+    });
+};
+
+const getOrganizations = async ({ id } = {}) => {
+  const query = "?q=organizations";
+  return fetch(apiPath + query)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log({ orgs: data.data });
       return data.data;
     });
 };
@@ -104,6 +116,7 @@ const ApplicationService = {
   getApplicationTypes,
   getApplicationCategories,
   getApplicationContacts,
+  getOrganizations,
 };
 
 export default ApplicationService;

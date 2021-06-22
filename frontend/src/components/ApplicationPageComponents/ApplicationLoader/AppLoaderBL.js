@@ -33,9 +33,12 @@ const AppLoaderBL = () => {
   const fetchApps = useCallback(async () => {
     const applications = await ApplicationService.getApplications({});
     const contacts = await ApplicationService.getApplicationContacts();
+    const orgs = await ApplicationService.getOrganizations();
     const applications2 = applications.map((a) => {
       //console.log("Loop: ", { a });
       a.contacts = contacts.filter((c) => c.appID === a.id);
+      a.publisher = orgs.find((o) => o.id === a.publisherID) ?? {};
+      a.developer = orgs.find((o) => o.id === a.developerID) ?? {};
       return a;
     });
     //console.log({ applications2 });
@@ -68,9 +71,11 @@ const AppLoaderBL = () => {
   React.useEffect(() => {
     fetchApps();
   }, [fetchApps]);
+
   React.useEffect(() => {
     fetchCategories();
   }, [fetchCategories]);
+
   React.useEffect(() => {
     fetchAppTypes();
   }, [fetchAppTypes]);
