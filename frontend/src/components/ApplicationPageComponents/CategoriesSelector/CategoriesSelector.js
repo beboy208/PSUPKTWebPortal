@@ -19,7 +19,7 @@ const CategoriesSelector = () => {
         {categories &&
           categories.map((cat, i) => {
             return (
-              <Col md={12} xs={4}>
+              <Col md={12} xs={4} key={cat.id}>
                 <FormCheck>
                   <FormCheck.Input
                     id={cat.id}

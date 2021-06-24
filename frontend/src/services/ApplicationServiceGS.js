@@ -96,7 +96,7 @@ const getApplicationContacts = async () => {
   return fetch(apiPath + "?q=contacts")
     .then((response) => response.json())
     .then((data) => {
-      console.log({ context: data.data });
+      console.log({ contact: data.data });
       return data.data;
     });
 };

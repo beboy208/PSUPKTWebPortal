@@ -5,48 +5,50 @@ import FilteredCategories from "../FilteredCategories/FilteredCategories";
 
 import { default as bl } from "./AppListBL";
 
-const AppListItem = ({ app, key }) => {
-  return (
-    <div key={key}>
-      {app.name} {app.categoryIDs} {app.typeID}
-      {/* {appTypes.find((t) => t.id === app.typeID)?.name || "-"} */}
-    </div>
-  );
-};
-
 const AppListAccordion = () => {
-  const { apps, categories, appTypes } = bl();
+  const { apps, categories } = bl();
+  const [appsGroupByCat, setAppsGroupByCat] = React.useState({
+    defaultCatID: 0,
+    data: [],
+  });
 
-  const getAppsInCats = (id) => {
-    let appsCat = apps.filter((a) => {
-      let catIDs = Array.from(a.categoryIDs);
-      console.log(catIDs);
-      return catIDs.includes(id);
-    });
-
-    console.log({ appsCat });
-    return appsCat.map((a) => {
-      return <div>{a.name}</div>;
-    });
-  };
+  React.useEffect(() => {
+    console.log(apps.length, categories.length);
+    //คาดว่าจะใช้ในการป้องกันการทำงานหลายรอบ แต่ยังคงไม่เป็นผล
+    if (apps.length > 0 && categories.length > 0) {
+      let result = {};
+      const data = categories.map((cat, i) => {
+        if (i === 0) {
+          result.defaultCatID = cat.id;
+        }
+        let newCatWithApps = cat;
+        newCatWithApps.applications = apps.filter((a) => {
+          let catIDs = Array.from(a.categoryIDs);
+          return catIDs.includes(cat.id);
+        });
+        return newCatWithApps;
+      });
+      result.data = data;
+      setAppsGroupByCat(result);
+      console.log(result);
+    }
+  }, []);
 
   return (
-    <div class="container">
+    <div className="container">
       <FilteredCategories categories={categories} />
       {/* {console.log(appTypes)} */}
       <Accordion defaultActiveKey="0">
-        {categories.map((cat, i) => {
+        {appsGroupByCat.data.map((cat) => {
           return (
-            <>
-              <Card>
-                <Accordion.Toggle as={Card.Header} eventKey={i}>
-                  {cat.name}
-                </Accordion.Toggle>
-                <Accordion.Collapse eventKey={i}>
-                  <Card.Body>{getAppsInCats(cat.id)}</Card.Body>
-                </Accordion.Collapse>
-              </Card>
-            </>
+            <Card key={cat.id}>
+              <Accordion.Toggle as={Card.Header} eventKey={cat.id}>
+                {cat.name}
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey={cat.id}>
+                <Card.Body>xxx</Card.Body>
+              </Accordion.Collapse>
+            </Card>
           );
         })}
       </Accordion>

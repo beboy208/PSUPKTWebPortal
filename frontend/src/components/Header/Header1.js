@@ -4,10 +4,10 @@ import logo from "../../assets/images/psulogoblue.png";
 
 const Header1 = () => {
   return (
-    <div class="header">
+    <div className="header">
       <Container>
-        <img src={logo} class="logo" alt="logo" />
-        <div class="title">WebPortal</div>
+        <img src={logo} className="logo" alt="logo" />
+        <div className="title">WebPortal</div>
       </Container>
     </div>
   );

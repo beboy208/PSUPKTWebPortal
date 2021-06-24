@@ -44,8 +44,8 @@ const AppListBL = () => {
   return {
     apps: filteredApps,
     categories: selectedCategories,
-    appTypes,
-    appContext,
+    // appTypes,
+    // appContext,
   };
 };
 

@@ -8,7 +8,6 @@ const CategoryBadeItem = ({ category }) => {
     color: "var(--header-bg-color)",
     backgroundColor: "var(--header-fg-color)",
   };
-  console.log(category);
   return (
     <Badge pill key={category.id} style={badgeStyle}>
       {category.name}
@@ -22,9 +21,9 @@ const FilteredCategories = ({ categories = [] }) => {
 
   return (
     <>
-      <div class="selectedCats" style={containerStyle}>
+      <div className="selectedCats" style={containerStyle}>
         {categories.map((c, i) => {
-          return <CategoryBadeItem category={c} />;
+          return <CategoryBadeItem category={c} key={i} />;
         })}
       </div>
     </>
