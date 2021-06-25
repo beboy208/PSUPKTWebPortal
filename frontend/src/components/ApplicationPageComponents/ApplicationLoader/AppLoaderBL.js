@@ -34,13 +34,15 @@ const AppLoaderBL = () => {
     const applications = await ApplicationService.getApplications({});
     const contacts = await ApplicationService.getApplicationContacts();
     const orgs = await ApplicationService.getOrganizations();
-    const applications2 = applications.map((a) => {
-      //console.log("Loop: ", { a });
-      a.contacts = contacts.filter((c) => c.appID === a.id);
-      a.publisher = orgs.find((o) => o.id === a.publisherID) ?? {};
-      a.developer = orgs.find((o) => o.id === a.developerID) ?? {};
-      return a;
-    });
+    const applications2 = applications
+      .filter((a) => a.isAvailable === "Y")
+      .map((a) => {
+        //console.log("Loop: ", { a });
+        a.contacts = contacts.filter((c) => c.appID === a.id);
+        a.publisher = orgs.find((o) => o.id === a.publisherID) ?? {};
+        a.developer = orgs.find((o) => o.id === a.developerID) ?? {};
+        return a;
+      });
     //console.log({ applications2 });
     setApps(applications2);
   }, [setApps]);
@@ -67,7 +69,7 @@ const AppLoaderBL = () => {
   React.useEffect(() => {
     console.log({ apps });
   }, [apps]);
-
+  /*
   React.useEffect(() => {
     fetchApps();
   }, [fetchApps]);
@@ -79,9 +81,13 @@ const AppLoaderBL = () => {
   React.useEffect(() => {
     fetchAppTypes();
   }, [fetchAppTypes]);
-  // React.useEffect(() => {
-  //   fetchAppContext();
-  // }, [fetchAppContext]);
+*/
+
+  React.useEffect(() => {
+    fetchApps();
+    fetchCategories();
+    fetchAppTypes();
+  }, []);
 
   return {
     apps,

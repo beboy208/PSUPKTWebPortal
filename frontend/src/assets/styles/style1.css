@@ -4,6 +4,7 @@
 
 .container {
   padding-top: 10px;
+  padding-bottom: 10px;
 }
 .selectedCats {
   display: flex;
@@ -11,8 +12,113 @@
   flex-wrap: wrap;
 }
 
+.appItem {
+  margin: 2px;
+  padding: 5px;
+  border: 1px solid var(--content-bg-color);
+  background-color: var(--content-bg-color);
+}
+
+.appItem .appInfo {
+  font-size: 0.7rem;
+}
+.appItem .appType {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.appItem .appCat {
+  display: inline-block;
+}
+
+.card-body-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-body-flex > div.appCard {
+  width: 49%;
+}
+
+.appCard {
+  color: gray;
+  margin: 4px 2px;
+}
+
+.appCard .card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin: -5px -4px 10px -4px;
+  padding: 2px 4px;
+}
+.appCard .card-title a {
+  color: var(--header-fg-color);
+}
+
+.appCard-1 {
+  background: rgb(251, 238, 253);
+}
+.appCard-2 {
+  background: rgb(228, 231, 245);
+}
+.appCard-3 {
+  background: rgb(226, 243, 226);
+}
+.appCard-4 {
+  background: rgb(245, 214, 214);
+}
+
+.appCard .card-subtitle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  flex-wrap: nowrap;
+}
+
+.appCard .card-subtitle div {
+  display: inline-block;
+}
+
+.appCard .appType {
+  font-size: 0.7rem;
+  /* margin-top: auto; */
+}
+.appCard .appType::after {
+  content: "";
+}
+/* 
+.appType-1 {
+  color: orange;
+}
+
+.appType-2 {
+  color: blue;
+}
+
+.appType-3 {
+  color: green;
+}
+
+.appType-4 {
+  color: gray;
+} */
+
+.appCard .card-body {
+  padding: 0.5rem;
+}
+
 @media screen and (max-width: 768px) {
   .selectedCats {
+    display: none;
+  }
+
+  .card-body-flex > div.appCard {
+    width: 100%;
+  }
+
+  .appCard .card-text {
     display: none;
   }
 }

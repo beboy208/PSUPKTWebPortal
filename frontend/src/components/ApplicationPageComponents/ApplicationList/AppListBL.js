@@ -3,7 +3,7 @@ import { ApplicationPageContext } from "../../../contexts/ApplicationPageContext
 
 const AppListBL = () => {
   const context = React.useContext(ApplicationPageContext);
-  const { apps, categories } = context;
+  const { apps, categories, appTypes } = context;
 
   //กำหนดข้อมูลที่ต้องการติดตามเฉพาะใน Component นี้ ประกอบด้วย
   //1. selectedCategories โดยมีค่าเริ่มต้นเท่ากับข้อมูล Categories ทั้งหมด
@@ -52,8 +52,7 @@ const AppListBL = () => {
     categories,
     filteredApps,
     selectedCategories,
-    // appTypes,
-    // appContext,
+    appTypes,
   };
 };
 

@@ -1,0 +1,26 @@
+import React from "react";
+
+const AppListItem = ({ item }) => {
+  return (
+    <div className="appItem">
+      <div className="appName">
+        <strong>{item.name}</strong>
+      </div>
+      <div className="appInfo">
+        <div className="appType">
+          <strong>Type: </strong>
+          {item.type ? item.type.name : "-"}
+        </div>
+        <div className="appCat">
+          <strong>Categories: </strong>
+          {item.categories.map((c) => c.name).join(", ")}
+        </div>
+      </div>
+      <div className="command">
+        <input type="button" value="View"></input>
+      </div>
+    </div>
+  );
+};
+
+export default AppListItem;

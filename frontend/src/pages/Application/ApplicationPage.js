@@ -7,18 +7,20 @@ import AppListAccordion from "../../components/ApplicationPageComponents/Applica
 
 const ApplicationPage = () => {
   return (
-    <ApplicationPageContextProvider>
-      <ApplicationLoader>
-        <Row>
-          <Col md={2} xs={12}>
-            <CategoriesSelector />
-          </Col>
-          <Col md={10} xs={12}>
-            <AppListAccordion />
-          </Col>
-        </Row>
-      </ApplicationLoader>
-    </ApplicationPageContextProvider>
+    <Container>
+      <ApplicationPageContextProvider>
+        <ApplicationLoader>
+          <Row>
+            <Col md={2} xs={12}>
+              <CategoriesSelector />
+            </Col>
+            <Col md={10} xs={12}>
+              <AppListAccordion />
+            </Col>
+          </Row>
+        </ApplicationLoader>
+      </ApplicationPageContextProvider>
+    </Container>
   );
 };
 

@@ -49,7 +49,7 @@ img.logo {
   margin-left: 10px;
 }
 
-#content {
+#main-content {
   background-color: var(--content-bg-color);
   color: var(--content-fg-color);
   min-height: 400px;

@@ -1,5 +1,5 @@
 import React from "react";
-import { FormCheck, Col, Container, Row } from "react-bootstrap";
+import { FormCheck, Col, Row } from "react-bootstrap";
 import { default as bl } from "./CategoriesSelectorBL";
 
 const CategoriesSelector = () => {
@@ -9,7 +9,7 @@ const CategoriesSelector = () => {
     // console.log({ onCategoryChange });
   }, [categories, onCategoryChange]);
   return (
-    <Container>
+    <>
       <Row>
         <Col>
           <strong>Categories</strong>
@@ -39,7 +39,7 @@ const CategoriesSelector = () => {
             );
           })}
       </Row>
-    </Container>
+    </>
   );
 };
 
