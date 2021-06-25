@@ -11,9 +11,7 @@ const MainLayout = ({ children }) => {
   return (
     <>
       <Header></Header>
-      <section id="content">
-        <Container>{children}</Container>
-      </section>
+      <Container id="main-content">{children}</Container>
       <Footer></Footer>
     </>
   );

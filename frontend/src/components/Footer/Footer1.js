@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 const Header1 = () => {
   return (
-    <div class="footer">
+    <div className="footer">
       <Container>
         Copyright: IT <a href="/">PSU</a>
       </Container>

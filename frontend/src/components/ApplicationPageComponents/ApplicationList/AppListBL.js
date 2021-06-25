@@ -3,7 +3,7 @@ import { ApplicationPageContext } from "../../../contexts/ApplicationPageContext
 
 const AppListBL = () => {
   const context = React.useContext(ApplicationPageContext);
-  const { apps, categories, appTypes, appContext } = context;
+  const { apps, categories } = context;
 
   //กำหนดข้อมูลที่ต้องการติดตามเฉพาะใน Component นี้ ประกอบด้วย
   //1. selectedCategories โดยมีค่าเริ่มต้นเท่ากับข้อมูล Categories ทั้งหมด
@@ -19,6 +19,10 @@ const AppListBL = () => {
     //console.log({ result });
   }, [categories]);
 
+  React.useEffect(() => {
+    //console.log({ filteredApps });
+  }, [filteredApps]);
+
   //ติดตามการเปลี่ยนแปลงค่าของ setSelectedCategories รวมถึง applications
   React.useEffect(() => {
     const selectedCateIDs = selectedCategories.map((c) => c.id);
@@ -30,20 +34,24 @@ const AppListBL = () => {
       //console.log(a);
       const matchCats = Array.isArray(a.categoryIDs)
         ? a.categoryIDs.filter((c) => {
-            let include = selectedCateIDs.includes(parseInt(c));
+            let include = selectedCateIDs.includes(c);
             //console.log(c, include);
             return include;
           })
         : [];
       //จะคือค่า Application ที่ตรวจสอบว่ามีค่า matchCats
+      //console.log("MatchCats", matchCats.length > 0);
       return matchCats.length > 0;
     });
+    //console.log("FilteredApp", { result });
     setFilteredApp(result);
   }, [apps, selectedCategories]);
 
   return {
-    apps: filteredApps,
-    categories: selectedCategories,
+    apps,
+    categories,
+    filteredApps,
+    selectedCategories,
     // appTypes,
     // appContext,
   };

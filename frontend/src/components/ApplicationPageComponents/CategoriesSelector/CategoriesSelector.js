@@ -1,12 +1,12 @@
 import React from "react";
-import { Col, Container, FormCheck, Row } from "react-bootstrap";
+import { FormCheck, Col, Container, Row } from "react-bootstrap";
 import { default as bl } from "./CategoriesSelectorBL";
 
 const CategoriesSelector = () => {
   const { categories, onCategoryChange } = bl();
   React.useEffect(() => {
-    console.log({ categories });
-    console.log({ onCategoryChange });
+    // console.log({ categories });
+    // console.log({ onCategoryChange });
   }, [categories, onCategoryChange]);
   return (
     <Container>
@@ -27,8 +27,14 @@ const CategoriesSelector = () => {
                     checked={cat.selected}
                     onChange={onCategoryChange}
                   />
-                  <FormCheck.Label for={cat.id}>{cat.name}</FormCheck.Label>
+                  <FormCheck.Label htmlFor={cat.id}>{cat.name}</FormCheck.Label>
                 </FormCheck>
+                {/* <Form.Check
+                  type="checkbox"
+                  id={cat.id}
+                  label={cat.name}
+                  onChange={onCategoryChange}
+                /> */}
               </Col>
             );
           })}

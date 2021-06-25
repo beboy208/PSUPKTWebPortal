@@ -6,7 +6,7 @@ const ApplicationLoader = ({ children }) => {
 
   let content;
   if (apps === null || categories === null) {
-    content = <div class={"loading"}>Loading</div>;
+    content = <div className={"loading"}>Loading</div>;
   } else {
     content = <>{children}</>;
   }

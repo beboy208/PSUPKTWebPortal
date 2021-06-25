@@ -16,10 +16,10 @@ const AppList = () => {
   const { apps, categories, appTypes } = bl();
 
   return (
-    <div class="container">
+    <div className="container">
       <FilteredCategories categories={categories} />
       {/* {console.log(appTypes)} */}
-      <div class="appList">
+      <div className="appList">
         {apps &&
           apps.map((app, i) => {
             //console.log({ app });
