@@ -4,16 +4,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
 import FilteredCategories from "../FilteredCategories/FilteredCategories";
 import AppListItem from "../ApplicationListItem";
-
 import { default as bl } from "./AppListBL";
+import ApplicationDetail from "../ApplicationDetail/ApplicationDetail";
 
 const AppListAccordion = () => {
   const { apps, categories, filteredApps, selectedCategories, appTypes } = bl();
   const [appsGroupByCat, setAppsGroupByCat] = React.useState([]);
   const [listItems, setListItems] = React.useState([]);
   const [defaultActiveKey, setDefaultActiveKey] = React.useState(-1);
+  const [showModal, setShowModal] = React.useState(false);
 
   /*
   [Manage new ViewModel: appsGroupByCat]
@@ -69,6 +72,9 @@ const AppListAccordion = () => {
       </Row>
       <Row>
         <Col>
+          <Button variant="primary" onClick={() => setShowModal(true)}>
+            Custom Width Modal
+          </Button>
           {/* {console.log(appTypes)} */}
           <Accordion defaultActiveKey={defaultActiveKey}>
             {listItems.map((cat) => {
@@ -95,6 +101,21 @@ const AppListAccordion = () => {
           </Accordion>
         </Col>
       </Row>
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        dialogClassName="modal-90w"
+        aria-labelledby="example-custom-modal-styling-title"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="example-custom-modal-styling-title">
+            Application Detail
+          </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ApplicationDetail application={null} />
+        </Modal.Body>
+      </Modal>
     </>
   );
 };

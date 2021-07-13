@@ -1,4 +1,5 @@
 import React from "react";
+import Spinner from "react-bootstrap/Spinner";
 import bl from "./AppLoaderBL";
 
 const ApplicationLoader = ({ children }) => {
@@ -6,7 +7,13 @@ const ApplicationLoader = ({ children }) => {
 
   let content;
   if (apps === null || categories === null || appTypes === null) {
-    content = <div className={"loading"}>Loading</div>;
+    content = (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Spinner animation="border" role="status" variant="info">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      </div>
+    );
   } else {
     content = <>{children}</>;
   }
