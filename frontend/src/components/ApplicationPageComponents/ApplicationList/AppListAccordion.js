@@ -6,10 +6,10 @@ import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import FilteredCategories from "../FilteredCategories/FilteredCategories";
+import FilteredCategories from "../FilteredCategories/";
 import AppListItem from "../ApplicationListItem";
 import { default as bl } from "./AppListBL";
-import ApplicationDetail from "../ApplicationDetail/ApplicationDetail";
+import ApplicationDetail from "../ApplicationDetail/";
 
 const AppListAccordion = () => {
   const { apps, categories, filteredApps, selectedCategories, appTypes } = bl();
@@ -17,6 +17,7 @@ const AppListAccordion = () => {
   const [listItems, setListItems] = React.useState([]);
   const [defaultActiveKey, setDefaultActiveKey] = React.useState(-1);
   const [showModal, setShowModal] = React.useState(false);
+  const [selectedApp, setSelectedApp] = React.useState(null);
 
   /*
   [Manage new ViewModel: appsGroupByCat]
@@ -87,10 +88,14 @@ const AppListAccordion = () => {
                     <Card.Body className="card-body-flex">
                       {cat.applications.map((app) => {
                         return (
-                          <AppListItem key={cat.id + app.id} item={app} />
-                          // <div id={cat.id + app.id} key={cat.id + app.id}>
-                          //   {app.name}
-                          // </div>
+                          <AppListItem
+                            key={cat.id + app.id}
+                            item={app}
+                            onViewDetail={() => {
+                              setSelectedApp(app);
+                              setShowModal(true);
+                            }}
+                          />
                         );
                       })}
                     </Card.Body>
@@ -113,7 +118,7 @@ const AppListAccordion = () => {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <ApplicationDetail application={null} />
+          <ApplicationDetail application={selectedApp} />
         </Modal.Body>
       </Modal>
     </>

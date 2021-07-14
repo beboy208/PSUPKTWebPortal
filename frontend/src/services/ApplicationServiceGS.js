@@ -1,4 +1,4 @@
-const appInfoDemo = {
+/*const appInfoDemo = {
   id: 999,
   name: "ApplicationName",
   description: "Description",
