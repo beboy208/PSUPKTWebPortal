@@ -10,21 +10,24 @@ const ApplicationDetail = ({ application }) => {
   if (application != null) {
     //const default_app_img = "src/assets/images/default_app.png";
     return (
-      <Container className="application-detail">
+      <Container className="applicationDetail">
         <Row>
-          <h3 className="title">
-            {application.name ? application.name : "Unknown"}
-          </h3>
+          <Col>
+            <h3 className="title">
+              {application.name ? application.name : "Unknown"}
+            </h3>
+          </Col>
         </Row>
         <Row>
-          <Col sm={12} lg={6}>
-            <img
-              src={application.bannderImgUrl || default_app_img} //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
-              alt=""
-              style={{ maxWidth: "90%", maxHeight: "150px" }}
-            />
+          <Col sm={12} lg={6} className="imageContainer">
+            <div>
+              <img
+                src={application.bannderImgUrl || default_app_img} //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Nullish_coalescing_operator
+                alt=""
+              />
+            </div>
           </Col>
-          <Col sm={12} lg={6}>
+          <Col sm={12} lg={6} className="descriptionContainer">
             <div>
               <strong>Categories: </strong>
               {application.categories.map((c) => c.name).join(", ")}
@@ -32,6 +35,11 @@ const ApplicationDetail = ({ application }) => {
             <div className="description">{application.description}</div>
             {/* <div className="category">{application.categories}</div>
           <div className="contact">{application.contacts}</div> */}
+          </Col>
+        </Row>
+        <Row>
+          <Col className="contactContainer">
+            <strong>Contact</strong>
           </Col>
         </Row>
       </Container>

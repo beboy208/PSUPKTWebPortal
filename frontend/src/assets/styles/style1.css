@@ -109,6 +109,36 @@
   padding: 0.5rem;
 }
 
+.appDetailModal .modal-header {
+  padding: 5px 15px;
+}
+
+.appDetailModal .title {
+  font-size: 1.3rem;
+}
+
+.applicationDetail .imageContainer {
+  display: flex;
+  padding: 0.6rem;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.applicationDetail .imageContainer > div {
+  max-width: 100%;
+  max-height: 200px;
+}
+.applicationDetail .imageContainer > div > img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.applicationDetail .descriptionContainer {
+  padding: 0.6rem;
+}
+
 @media screen and (max-width: 768px) {
   .selectedCats {
     display: none;
