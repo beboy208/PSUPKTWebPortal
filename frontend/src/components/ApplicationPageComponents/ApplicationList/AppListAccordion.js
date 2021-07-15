@@ -107,6 +107,7 @@ const AppListAccordion = () => {
         </Col>
       </Row>
       <Modal
+        size="lg"
         show={showModal}
         onHide={() => setShowModal(false)}
         dialogClassName="modal-90w"
