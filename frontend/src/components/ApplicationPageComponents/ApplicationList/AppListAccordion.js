@@ -10,6 +10,7 @@ import FilteredCategories from "../FilteredCategories/";
 import AppListItem from "../ApplicationListItem";
 import { default as bl } from "./AppListBL";
 import ApplicationDetail from "../ApplicationDetail/";
+import { BiUnlink, BiLinkExternal } from "react-icons/bi";
 
 const AppListAccordion = () => {
   const { apps, categories, filteredApps, selectedCategories, appTypes } = bl();
@@ -61,6 +62,18 @@ const AppListAccordion = () => {
     // }
   }, [selectedCategories]);
 
+  const modalFooter = (url) => {
+    if (url !== "") {
+      return (
+        <a href={url} target="_blank" rel="noreferrer">
+          {url} <BiLinkExternal />
+        </a>
+      );
+    } else {
+      return <BiUnlink />;
+    }
+  };
+
   return (
     <>
       <Row>
@@ -73,9 +86,9 @@ const AppListAccordion = () => {
       </Row>
       <Row>
         <Col>
-          <Button variant="primary" onClick={() => setShowModal(true)}>
+          {/* <Button variant="primary" onClick={() => setShowModal(true)}>
             Custom Width Modal
-          </Button>
+          </Button> */}
           {/* {console.log(appTypes)} */}
           <Accordion defaultActiveKey={defaultActiveKey}>
             {listItems.map((cat) => {
@@ -119,9 +132,11 @@ const AppListAccordion = () => {
             Application Detail
           </Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{ maxHeight: window.innerHeight - 140 + "px" }}>
+          {/* {selectedApp.url} */}
           <ApplicationDetail application={selectedApp} />
         </Modal.Body>
+        <Modal.Footer>{modalFooter(selectedApp?.url || "")} </Modal.Footer>
       </Modal>
     </>
   );

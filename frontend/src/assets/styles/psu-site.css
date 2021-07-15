@@ -56,7 +56,7 @@ img.logo {
 }
 
 a {
-  color: var(--color3);
+  color: var(--content-hl-color);
 }
 
 .footer {

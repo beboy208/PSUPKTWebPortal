@@ -3,12 +3,12 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import truncateTextEllipsis from "../../../utils/truncateTextEllipsis";
 import {
-  AiOutlineLink,
   AiOutlineGlobal,
   AiFillWindows,
   AiFillAndroid,
   AiFillApple,
 } from "react-icons/ai";
+import { BiLinkExternal } from "react-icons/bi";
 // import ApplicationDetail from "../ApplicationDetail/ApplicationDetail";
 // import CardLink from "../../CardLink";
 
@@ -41,7 +41,7 @@ const AppListItemCard = ({ item, onViewDetail = () => {} }) => {
           {/* <TextUrl text={item.name} url={item.url} /> */}
           {item.url.length > 0 ? (
             <a href={item.url} target="_blank" rel="noreferrer">
-              <AiOutlineLink /> {item.name}
+              {item.name} <BiLinkExternal />
             </a>
           ) : (
             item.name

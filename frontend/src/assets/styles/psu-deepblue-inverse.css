@@ -6,6 +6,6 @@
   --footer-fg-color: #003c71;
   --footer-hl-color: #009cde;
   --content-bg-color: rgb(245, 245, 245);
-  --content-fg-color: black;
-  --content-hl-color: #009cde;
+  --content-fg-color: rgb(39, 42, 52);
+  --content-hl-color: rgb(2, 151, 214);
 }

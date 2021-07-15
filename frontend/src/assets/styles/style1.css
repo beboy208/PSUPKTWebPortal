@@ -41,7 +41,6 @@
 }
 
 .appCard {
-  color: gray;
   margin: 4px 2px;
 }
 
@@ -54,7 +53,7 @@
   padding: 2px 4px;
 }
 .appCard .card-title a {
-  color: var(--header-fg-color);
+  /*color: var(--header-fg-color);*/
 }
 
 .appCard-1 {
@@ -109,12 +108,21 @@
   padding: 0.5rem;
 }
 
+.appDetailModal .modal-content {
+  height: 95%;
+}
+
 .appDetailModal .modal-header {
   padding: 5px 15px;
 }
 
 .appDetailModal .title {
   font-size: 1.3rem;
+}
+
+.appDetailModal .modal-body {
+  /*height: 420px;*/
+  overflow-y: scroll;
 }
 
 .applicationDetail .imageContainer {
