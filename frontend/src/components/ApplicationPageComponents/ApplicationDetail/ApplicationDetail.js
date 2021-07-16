@@ -14,10 +14,10 @@ const ApplicationDetail = ({ application }) => {
       return (
         <>
           <strong>Publisher:</strong>
-          <div>
+          <p>
             {publisherObj.nameEn} <br />
             {publisherObj.nameTh}
-          </div>
+          </p>
         </>
       );
     }
@@ -28,10 +28,10 @@ const ApplicationDetail = ({ application }) => {
       return (
         <>
           <strong>Developer:</strong>
-          <div>
+          <p>
             {devObj.nameEn} <br />
             {devObj.nameTh}
-          </div>
+          </p>
         </>
       );
     }
@@ -58,11 +58,11 @@ const ApplicationDetail = ({ application }) => {
             </div>
           </Col>
           <Col sm={12} lg={6} className="descriptionContainer">
-            <div>
+            <p>
               <strong>Categories: </strong>
               {application.categories.map((c) => c.name).join(", ")}
-            </div>
-            <div className="description">{application.description}</div>
+            </p>
+            <p className="description">{application.description}</p>
             {/* <div className="category">{application.categories}</div>
           <div className="contact">{application.contacts}</div> */}
           </Col>
@@ -77,20 +77,26 @@ const ApplicationDetail = ({ application }) => {
         </Row>
         <Row>
           <Col className="contactContainer">
-            <strong>Contact</strong> {/* ({application.contacts.length}) */}
-            <ul>
-              {application.contacts.map((c) => {
-                return (
-                  <li>
-                    {c.name}&emsp;
-                    <FiBriefcase /> {c.position || "-"}&emsp;
-                    <FiPhone /> {c.phone || "-"}&emsp;
-                    <FiMail />{" "}
-                    {c.emails && <a href={`mailto: ${c.emails}`}>{c.emails}</a>}
-                  </li>
-                );
-              })}
-            </ul>
+            <p>
+              <strong>Contact</strong> {/* ({application.contacts.length}) */}
+              <ul>
+                {application.contacts.length <= 0 ? (
+                  <li>-</li>
+                ) : (
+                  application.contacts.map((c) => {
+                    return (
+                      <li>
+                        {c.name}&emsp;
+                        <FiBriefcase /> {c.position || "-"}&emsp;
+                        <FiPhone /> {c.phones || "-"}&emsp;
+                        <FiMail /> {c.emails || "-"}
+                        {/* {c.emails && <a href={`mailto: ${c.emails}`}>{c.emails}</a>} */}
+                      </li>
+                    );
+                  })
+                )}
+              </ul>
+            </p>
           </Col>
         </Row>
       </Container>
