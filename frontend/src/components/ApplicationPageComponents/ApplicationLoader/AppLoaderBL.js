@@ -35,7 +35,7 @@ const AppLoaderBL = () => {
     const contacts = await ApplicationService.getApplicationContacts();
     const orgs = await ApplicationService.getOrganizations();
     const applications2 = applications
-      .filter((a) => a.isAvailable === "Y")
+      .filter((a) => a.isAvailable === "true")
       .map((a) => {
         //console.log("Loop: ", { a });
         a.contacts = contacts.filter((c) => c.appID === a.id);
@@ -49,7 +49,13 @@ const AppLoaderBL = () => {
 
   const fetchCategories = useCallback(() => {
     ApplicationService.getApplicationCategories().then((data) => {
-      data.map((c) => (c.selected = true));
+      //console.log({ data });
+      data.map((c) => (c.selected = c.defaultChecked === "Y"));
+      data.sort((a, b) => {
+        //console.log(a.name, b.name, a.name > b.name);
+        return a.name > b.name ? 1 : -1;
+      });
+      //console.log({ data });
       setCategories(data);
     });
   }, [setCategories]);

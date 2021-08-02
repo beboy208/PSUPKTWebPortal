@@ -7,6 +7,8 @@ import {
   AiFillWindows,
   AiFillAndroid,
   AiFillApple,
+  AiOutlineAreaChart,
+  AiOutlineForm,
 } from "react-icons/ai";
 import { BiLinkExternal } from "react-icons/bi";
 // import ApplicationDetail from "../ApplicationDetail/ApplicationDetail";
@@ -27,6 +29,12 @@ const AppListItemCard = ({ item, onViewDetail = () => {} }) => {
         break;
       case "IOS Application":
         icon = <AiFillApple />;
+        break;
+      case "Dashboard":
+        icon = <AiOutlineAreaChart />;
+        break;
+      case "Form":
+        icon = <AiOutlineForm />;
         break;
       default:
         break;

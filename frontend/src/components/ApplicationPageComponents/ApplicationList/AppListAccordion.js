@@ -10,6 +10,7 @@ import FilteredCategories from "../FilteredCategories/";
 import AppListItem from "../ApplicationListItem";
 import { default as bl } from "./AppListBL";
 import ApplicationDetail from "../ApplicationDetail/";
+import truncateTextEllipsis from "../../../utils/truncateTextEllipsis";
 import { BiUnlink, BiLinkExternal } from "react-icons/bi";
 
 const AppListAccordion = () => {
@@ -66,7 +67,7 @@ const AppListAccordion = () => {
     if (url !== "") {
       return (
         <a href={url} target="_blank" rel="noreferrer">
-          {url} <BiLinkExternal />
+          {truncateTextEllipsis(url, 40)} <BiLinkExternal />
         </a>
       );
     } else {
@@ -99,6 +100,8 @@ const AppListAccordion = () => {
                   </Accordion.Toggle>
                   <Accordion.Collapse eventKey={cat.id}>
                     <Card.Body className="card-body-flex">
+                      <p style={{ width: "100%" }}>{cat.note}</p>
+                      <br />
                       {cat.applications.map((app) => {
                         return (
                           <AppListItem

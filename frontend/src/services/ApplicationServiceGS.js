@@ -42,7 +42,8 @@ const mockApplicationType = [
 ];
 */
 const apiPath =
-  "https://script.google.com/macros/s/AKfycbxqEDuO-Abbfbb2EhUroqhWJXKPAvZKvWVb5-nNzSeH-yYXOoU4Ju3S4Kg2hsPBleO6/exec";
+  "https://script.google.com/macros/s/AKfycbxcQgNnhX0FGXeLygeaAtJtiOzpLyycggwJSNPo4IG7GpPVOfAl3mhb5DufHtsqrhvO/exec";
+// "https://script.google.com/macros/s/AKfycbxqEDuO-Abbfbb2EhUroqhWJXKPAvZKvWVb5-nNzSeH-yYXOoU4Ju3S4Kg2hsPBleO6/exec";
 
 /**
  * Get Applications

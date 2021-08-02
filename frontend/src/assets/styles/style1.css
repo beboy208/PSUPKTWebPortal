@@ -56,17 +56,31 @@
   /*color: var(--header-fg-color);*/
 }
 
+/* Web Application */
 .appCard-1 {
-  background: rgb(251, 238, 253);
+  /* background: rgb(251, 238, 253); */
+  background: rgb(247, 242, 247);
 }
+/* Windows Application */
 .appCard-2 {
   background: rgb(228, 231, 245);
 }
+/* Android Application */
 .appCard-3 {
   background: rgb(226, 243, 226);
 }
+/* IOS Application */
 .appCard-4 {
   background: rgb(245, 214, 214);
+}
+/* Dashboard */
+.appCard-5 {
+  background-color: rgb(253, 232, 138);
+}
+
+/* Dashboard */
+.appCard-6 {
+  background-color: rgb(221, 184, 241);
 }
 
 .appCard .card-subtitle {
@@ -145,6 +159,10 @@
 
 .applicationDetail .descriptionContainer {
   padding: 0.6rem;
+}
+
+.applicationDetail .descriptionContainer .description {
+  white-space: break-spaces;
 }
 
 @media screen and (max-width: 768px) {

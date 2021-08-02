@@ -18,13 +18,14 @@ const CategoriesSelector = () => {
       <Row>
         {categories &&
           categories.map((cat, i) => {
+            //console.log({ cat });
             return (
               <Col md={12} xs={4} key={cat.id}>
                 <FormCheck>
                   <FormCheck.Input
                     id={cat.id}
                     value={cat.id}
-                    checked={cat.selected}
+                    checked={cat.selected === true}
                     onChange={onCategoryChange}
                   />
                   <FormCheck.Label htmlFor={cat.id}>{cat.name}</FormCheck.Label>

@@ -10,12 +10,14 @@ const ApplicationDetail = ({ application }) => {
   //return <div>{"name" in application ? application.name : ""}</div>;
 
   const renderPublisherElement = (publisherObj) => {
+    //console.log(publisherObj);
+    //if (publisherObj !== null && Object.keys(publisherObj).length > 0) {
     if (publisherObj !== null) {
       return (
         <>
           <strong>Publisher:</strong>
           <p>
-            {publisherObj.nameEn} <br />
+            {publisherObj.nameEn ?? "-"} <br />
             {publisherObj.nameTh}
           </p>
         </>
@@ -29,7 +31,7 @@ const ApplicationDetail = ({ application }) => {
         <>
           <strong>Developer:</strong>
           <p>
-            {devObj.nameEn} <br />
+            {devObj.nameEn ?? "-"} <br />
             {devObj.nameTh}
           </p>
         </>
@@ -39,6 +41,7 @@ const ApplicationDetail = ({ application }) => {
 
   if (application != null) {
     //const default_app_img = "src/assets/images/default_app.png";
+    console.log({ application });
     return (
       <Container className="applicationDetail">
         <Row>
@@ -62,7 +65,7 @@ const ApplicationDetail = ({ application }) => {
               <strong>Categories: </strong>
               {application.categories.map((c) => c.name).join(", ")}
             </p>
-            <p className="description">{application.description}</p>
+            <div className="description">{application.description}</div>
             {/* <div className="category">{application.categories}</div>
           <div className="contact">{application.contacts}</div> */}
           </Col>
